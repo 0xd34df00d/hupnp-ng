@@ -207,7 +207,7 @@ QByteArray HHttpMessageCreator::setupData(
 
     reqHdr.setValue(
         "DATE",
-        QDateTime::currentDateTime().toString(HHttpUtils::rfc1123DateFormat()));
+        QLocale::c().toString(QDateTime::currentDateTime(), HHttpUtils::rfc1123DateFormat()));
 
     QString contentType = contentTypeToString(ct);
     if (!contentType.isEmpty())
@@ -538,7 +538,7 @@ bool HHttpMessageCreator::create(
     HTimeout  timeout = HTimeout(respHdr.value("TIMEOUT"));
     QString   server  = respHdr.value("SERVER");
     QDateTime date    =
-        QDateTime::fromString(respHdr.value("DATE"), HHttpUtils::rfc1123DateFormat());
+        QLocale::c().toDateTime(respHdr.value("DATE"), HHttpUtils::rfc1123DateFormat());
 
     resp = HSubscribeResponse(sid, HProductTokens(server), timeout, date);
     return resp.isValid(false);
