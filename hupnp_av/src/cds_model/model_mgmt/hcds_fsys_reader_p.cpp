@@ -96,6 +96,7 @@ QHash<QString, MimeAndItemCreator> initializeCreatorFunctions()
     retVal["avi"] = MimeAndItemCreator("video/x-msvideo", createVideoItem);
     retVal["asf"] = MimeAndItemCreator("video/x-ms-asf", createVideoItem);
     retVal["asr"] = MimeAndItemCreator("video/x-ms-asf", createVideoItem);
+    retVal["mkv"] = MimeAndItemCreator("video/x-matroska", createVideoItem);
 
     retVal["bmp"] = MimeAndItemCreator("image/bmp", createPhotoItem);
     retVal["gif"] = MimeAndItemCreator("image/gif", createPhotoItem);
